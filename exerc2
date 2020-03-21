@@ -1,1 +1,84 @@
+//A fim de representar empregados em uma empresa, crie
+uma classe chamada Empregado que inclui as três informações a
+seguir como atributos:
+• um primeiro nome,
+• um sobrenome, e
+• um salário mensal.
+Sua classe deve ter um construtor (veja sobre este método
+especial na apostila pág. 6, e nos vídeos [1] e [2]) que
+inicializa os três atributos. Forneça um método set e get para
+cada atributo. Se o salário mensal não for positivo, configure-o
+como 0.0. Escreva um código de teste que demonstra as
+capacidades da classe. Crie duas instâncias da classe e exiba o
+salário anual de cada instância. Então dê a cada empregado um
+aumento de 10% e exiba novamente o salário anual de cada
+empregado.//
 
+<?php
+class Empregados{
+  public $pn;
+  public $sn;
+  public $sm;
+  public $sa;
+
+
+  public function __construct(){
+    $this-> pn = "Josie";
+    $this-> sn = "Curtis";
+    $this-> sm = 5000.00;
+  }
+  public function setPn($recebe){
+    return $this->pn = $recebe;
+  }
+  public function getPn(){
+    return $this ->pn;
+  }
+  public function setSn($recebe1){
+    return $this->sn = $recebe1;
+  }
+  public function getSn(){
+    return $this ->sn;
+  }
+  public function setSm($recebe2){
+    return $this->sm = $recebe2;
+  }
+  public function getSalmen(){
+    return $this ->sm;
+  }
+  public function setSa(){
+    
+    return $this->sa = $this->sm*12;
+  }
+  public function getSa(){
+    return $this ->sa;
+  }
+  public function validaSm(){
+    if($this->sm < 0){
+      $this->sm = 0.0;
+    }
+  }
+  public function aumentasalmen(){
+    $porc = ($this->sm*10)/100;
+    $this-> sm = $this->sm + $porc;
+  }
+}
+//empregado 01
+$emp1 = new Empregados();
+$emp1->validaSm();
+$emp1->setSa();
+echo "O salario anual de {$emp1-> getPn()} {$emp1->getSnome()} é R$ {$emp1->getSa()}\n"; 
+$emp1 -> aumentasm();
+$emp1->setSa();
+echo "O salario anual de {$emp1-> getPn()} ,recebeu acrescimo de 10% e agora mudou para R$ {$emp1->getSa()} \n ";
+//empregado 02
+$emp2 = new Empregados();
+$emp2 -> setPn("Josi");
+$emp2 -> setSn("Reinaco");
+$emp2->setSm(1000);
+$emp2->validaSm();
+$emp2->setSa();
+echo "O salario anual de {$emp2-> getPnome()}  {$emp2->getSnome()} é R$ {$emp2->getSalanu()} \n"; 
+$emp2 -> aumentasm();
+$emp2->setSa();
+echo "O salario anual de {$emp2-> getPnome()} ,recebeu acrescimo de 10% e agora mudou para {$emp2->getSalanu()} \n ";
+?>
